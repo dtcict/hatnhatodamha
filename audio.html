@@ -78,97 +78,67 @@
         </div>
     </main>
 
-    <audio id="main-audio" src="https://docs.google.com/uc?export=open&id=1xGDez7nDLFW8CxWvrw8WyZAT7hGlP61y"></audio>
+    <iframe id="drive-player" src="" class="hidden" allow="autoplay"></iframe>
 
     <footer class="fixed bottom-0 w-full bg-stone-900 text-white p-4 shadow-2xl border-t border-stone-800">
         <div class="max-w-5xl mx-auto flex items-center gap-4">
             <div class="text-sm min-w-[180px]">
-                <p class="font-bold text-gold truncate" id="player-title">Đang phát: Bản thu âm Di sản Cửa Đình</p>
-                <p class="text-[10px] text-stone-400 truncate" id="player-artist">Tư liệu khảo cứu trực tuyến</p>
+                <p class="font-bold text-gold truncate" id="player-title">Đang phát: Chưa chọn bài</p>
+                <p class="text-[10px] text-stone-400 truncate" id="player-artist">-</p>
             </div>
-            <div class="flex-1 h-1 bg-stone-700 rounded-full overflow-hidden cursor-pointer" id="progress-container" onclick="setProgress(event)">
-                <div class="h-full bg-heritage-500 w-0 transition-all duration-100" id="progress-bar"></div>
+            <div class="flex-1 h-1 bg-stone-700 rounded-full overflow-hidden">
+                <div class="h-full bg-heritage-500 w-1/3" id="progress-bar-mock"></div>
             </div>
             <div class="flex items-center gap-4">
-                <span class="text-xs font-mono text-stone-400" id="time-display">0:00</span>
-                <button class="text-2xl focus:outline-none select-none" id="master-play-btn" onclick="togglePlay()">⏸</button>
+                <button class="text-2xl focus:outline-none select-none" id="master-play-btn" onclick="togglePlay()">▶</button>
             </div>
         </div>
     </footer>
 
     <script>
-        const audio = document.getElementById('main-audio');
-        const progressBar = document.getElementById('progress-bar');
-        const progressContainer = document.getElementById('progress-container');
-        const timeDisplay = document.getElementById('time-display');
+        const iframePlayer = document.getElementById('drive-player');
         const playerTitle = document.getElementById('player-title');
         const playerArtist = document.getElementById('player-artist');
         const masterPlayBtn = document.getElementById('master-play-btn');
+        let currentSrc = "";
+        let isPlaying = false;
 
-        // Hàm xử lý khi nhấn vào dòng bài hát trong Playlist
         function playTrack(element) {
-            // Gỡ bỏ trạng thái hoạt động cũ
             document.querySelectorAll('.audio-track').forEach(item => {
                 item.classList.remove('active-track');
                 item.querySelector('.play-btn').innerHTML = '▶';
-                item.querySelector('.play-btn').className = "w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center play-btn hover:bg-heritage-500 hover:text-white transition-all";
             });
 
-            // Thêm trạng thái hoạt động mới
             element.classList.add('active-track');
-            const playBtn = element.querySelector('.play-btn');
-            playBtn.innerHTML = '⏸';
-            playBtn.className = "w-10 h-10 rounded-full bg-heritage-500 text-white flex items-center justify-center play-btn";
+            element.querySelector('.play-btn').innerHTML = '⏸';
 
-            // Cập nhật nguồn nhạc và thông tin trình phát dưới đáy
-            audio.src = element.getAttribute('data-src');
+            // Lấy ID trực tiếp từ link Drive của bạn và chuyển thành link preview chuyên dụng
+            currentSrc = "https://drive.google.com/file/d/1xGDez7nDLFW8CxWvrw8WyZAT7hGlP61y/preview";
+            
             playerTitle.innerHTML = "Đang phát: " + element.getAttribute('data-title');
             playerArtist.innerHTML = element.getAttribute('data-artist');
 
-            audio.play();
+            iframePlayer.src = currentSrc;
             masterPlayBtn.innerHTML = '⏸';
+            isPlaying = true;
         }
 
-        // Hàm Bật/Tắt (Play/Pause) tại thanh điều khiển chính
         function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                masterPlayBtn.innerHTML = '⏸';
-                updatePlaylistButtonState(true);
-            } else {
-                audio.pause();
+            if (!currentSrc) return;
+            if (isPlaying) {
+                iframePlayer.src = ""; // Dừng phát bằng cách xóa nguồn iframe
                 masterPlayBtn.innerHTML = '▶';
-                updatePlaylistButtonState(false);
-            }
-        }
-
-        function updatePlaylistButtonState(isPlaying) {
-            const activeTrack = document.querySelector('.active-track');
-            if (activeTrack) {
-                activeTrack.querySelector('.play-btn').innerHTML = isPlaying ? '⏸' : '▶';
-            }
-        }
-
-        // Cập nhật thanh thời gian và tiến trình chạy nhạc mẫu
-        audio.addEventListener('timeupdate', () => {
-            if(audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progressPercent}%`;
-
-                // Định dạng hiển thị phút:giây
-                const currentMinutes = Math.floor(audio.currentTime / 60);
-                const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
-                timeDisplay.innerHTML = `${currentMinutes}:${currentSeconds}`;
-            }
-        });
-
-        // Hàm tua nhạc khi nhấn trực tiếp vào thanh tiến trình
-        function setProgress(e) {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audio.duration;
-            if(duration) {
-                audio.currentTime = (clickX / width) * duration;
+                if(document.querySelector('.active-track')) {
+                    document.querySelector('.active-track').querySelector('.play-btn').innerHTML = '▶';
+                }
+                isPlaying = false;
+            } else {
+                iframePlayer.src = currentSrc; // Phát lại
+                masterPlayBtn.innerHTML = '⏸';
+                if(document.querySelector('.active-track')) {
+                    document.querySelector('.active-track').querySelector('.play-btn').innerHTML = '⏸';
+                }
+                isPlaying = true;
             }
         }
     </script>
