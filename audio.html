@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kho Âm Thanh - Hát Múa Cửa Đình</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { heritage: { 500: '#cc4425', 950: '#1c0500' }, gold: '#dfb76c' } } } }
+    </script>
+    <style>
+        .glass-nav { background: rgba(28, 5, 0, 0.8); backdrop-filter: blur(12px); }
+        .audio-track:hover { background-color: #fffaf7; border-color: #cc4425; }
+        .active-track { border-left: 4px solid #cc4425; background-color: #fffaf7; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans pb-32">
+
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50 border-b border-white/10 py-5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-serif font-bold text-gold tracking-wider">CỬA ĐÌNH</a>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-stone-300">
+                <a href="index.html" class="hover:text-white">Trang Chủ</a>
+                <a href="videos.html" class="hover:text-white">Phim & Trailer</a>
+                <a href="audio.html" class="text-gold border-b border-gold">Âm Thanh</a>
+                <a href="gallery.html" class="hover:text-white">Thư Viện Ảnh</a>
+                <a href="ebook.html" class="hover:text-white">E-Book</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 pt-32">
+        <header class="mb-12">
+            <h1 class="text-4xl font-serif font-bold text-heritage-950">4. Kho Dữ Liệu Tiếng</h1>
+            <p class="text-stone-500 mt-2">Tuyển tập các làn điệu cổ truyền, nhạc cụ đơn và bản thu tế lễ nguyên bản.</p>
+        </header>
+
+        <div class="space-y-4">
+            <div class="audio-track flex items-center p-4 bg-white border border-stone-200 rounded-xl transition-all cursor-pointer group active-track">
+                <div class="w-12 h-12 bg-heritage-100 rounded-lg flex items-center justify-center text-heritage-500 mr-4">🎵</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-stone-900">Hát Giai - Điệu thờ thành hoàng</h3>
+                    <p class="text-xs text-stone-500">Nghệ nhân ưu tú • 05:20</p>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-heritage-500 text-white flex items-center justify-center hover:scale-105 transition-transform">▶</button>
+            </div>
+
+            <div class="audio-track flex items-center p-4 bg-white border border-stone-200 rounded-xl transition-all cursor-pointer group">
+                <div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center text-rose-500 mr-4">🪕</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-stone-900">Đàn Đáy đơn tấu - Cung nam</h3>
+                    <p class="text-xs text-stone-500">Nhạc cụ cổ truyền • 04:15</p>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center hover:bg-heritage-500 hover:text-white transition-all">▶</button>
+            </div>
+
+            <div class="audio-track flex items-center p-4 bg-white border border-stone-200 rounded-xl transition-all cursor-pointer group">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-500 mr-4">🥁</div>
+                <div class="flex-1">
+                    <h3 class="font-bold text-stone-900">Tiếng trống chầu tế lễ</h3>
+                    <p class="text-xs text-stone-500">Nghi thức sân đình • 06:45</p>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center hover:bg-heritage-500 hover:text-white transition-all">▶</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-stone-900 text-white p-4 shadow-2xl border-t border-stone-800">
+        <div class="max-w-5xl mx-auto flex items-center gap-4">
+            <div class="text-sm">
+                <p class="font-bold text-gold">Đang phát: Hát Giai</p>
+                <p class="text-[10px] text-stone-400">Nghệ nhân ưu tú - Di sản Cửa Đình</p>
+            </div>
+            <div class="flex-1 h-1 bg-stone-700 rounded-full overflow-hidden">
+                <div class="w-1/3 h-full bg-heritage-500"></div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="text-stone-400">⏮</button>
+                <button class="text-2xl">⏸</button>
+                <button class="text-stone-400">⏭</button>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
