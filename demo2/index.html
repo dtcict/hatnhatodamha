@@ -41,51 +41,56 @@
 </head>
 <body class="bg-heritage-bg text-heritage-dark font-sans h-full overflow-hidden flex flex-col md:flex-row">
 
-    <aside class="w-full md:w-80 bg-heritage-dark text-stone-300 flex flex-col justify-between border-r border-heritage-gold/30 shrink-0 z-10 shadow-xl">
-        <div class="p-6 border-b border-stone-800 flex items-center space-x-3">
-            <div class="w-10 h-10 border-2 border-heritage-gold rounded-sm flex items-center justify-center rotate-45 shrink-0">
-                <span class="font-serif font-bold text-heritage-gold -rotate-45 text-lg">Đ</span>
+    <aside class="w-full md:w-80 bg-heritage-dark text-stone-300 flex flex-col md:justify-between border-b md:border-b-0 md:border-r border-heritage-gold/30 shrink-0 z-50 shadow-xl">
+        
+        <div class="p-4 md:p-6 border-b border-stone-800 flex items-center space-x-3 justify-between md:justify-start">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 md:w-10 md:h-10 border-2 border-heritage-gold rounded-sm flex items-center justify-center rotate-45 shrink-0">
+                    <span class="font-serif font-bold text-heritage-gold -rotate-45 text-sm md:text-lg">Đ</span>
+                </div>
+                <div>
+                    <h1 class="font-serif text-sm md:text-lg font-bold tracking-wide text-white leading-tight">HÁT MÚA CỬA ĐÌNH</h1>
+                    <p class="text-[9px] md:text-[10px] tracking-widest text-heritage-gold uppercase font-semibold block md:inline">Bảng Số Hóa Di Sản</p>
+                </div>
             </div>
-            <div>
-                <h1 class="font-serif text-lg font-bold tracking-wide text-white leading-tight">HÁT MÚA CỬA ĐÌNH</h1>
-                <p class="text-[10px] tracking-widest text-heritage-gold uppercase font-semibold">Bảng Số Hóa Di Sản</p>
-            </div>
+            <span class="md:hidden text-[10px] bg-stone-800 text-heritage-gold px-2 py-0.5 rounded-sm border border-heritage-gold/20">Tư liệu</span>
         </div>
 
-        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto custom-scrollbar">
-            <button onclick="switchTab(event, 'tab-tong-quan')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-sm transition-all duration-300 text-white bg-heritage-primary border-l-4 border-heritage-gold">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                <span>Tổng quan Di sản</span>
+        <nav class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-hidden md:overflow-y-auto px-2 md:px-4 py-2 md:py-6 gap-2 shrink-0 custom-scrollbar whitespace-nowrap md:whitespace-normal">
+            
+            <button onclick="switchTab(event, 'tab-tong-quan')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-white bg-heritage-primary border-b-2 md:border-b-0 md:border-l-4 border-heritage-gold shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span>Tổng quan</span>
             </button>
 
-            <button onclick="switchTab(event, 'tab-video')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                <span>Phim & Video tư liệu</span>
+            <button onclick="switchTab(event, 'tab-video')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <span>Phim & Video</span>
             </button>
 
-            <button onclick="switchTab(event, 'tab-audio')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-                <span>Kho dữ liệu Audio</span>
+            <button onclick="switchTab(event, 'tab-audio')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                <span>Kho Audio</span>
             </button>
 
-            <button onclick="switchTab(event, 'tab-hinh-anh')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                <span>Thư viện Hình ảnh</span>
+            <button onclick="switchTab(event, 'tab-hinh-anh')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span>Thư viện Ảnh</span>
             </button>
 
-            <button onclick="switchTab(event, 'tab-ebook')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                <span>Sách điện tử (E-Book)</span>
+            <button onclick="switchTab(event, 'tab-ebook')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <span>Sách E-Book</span>
             </button>
         </nav>
 
-        <div class="p-4 border-t border-stone-800 text-center text-[11px] text-stone-500">
+        <div class="hidden md:block p-4 border-t border-stone-800 text-center text-[11px] text-stone-500">
             <p>&copy; 2026 Hát Múa Cửa Đình</p>
             <p class="text-heritage-gold/60 mt-1">Hệ thống lưu trữ số hóa</p>
         </div>
     </aside>
 
-    <main class="flex-1 p-4 md:p-8 h-full overflow-y-auto custom-scrollbar relative flex flex-col justify-between">
+    <main class="flex-1 p-4 md:p-8 min-h-0 overflow-y-auto custom-scrollbar relative flex flex-col justify-between">
         
         <div class="w-full max-w-6xl mx-auto flex-1">
             <div id="tab-tong-quan" class="tab-content active space-y-6">
@@ -224,25 +229,28 @@
 
     <script>
         function switchTab(event, tabId) {
-            // Ẩn toàn bộ các nội dung tab hiện tại [cite: 87]
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
+			// Ẩn toàn bộ nội dung tab
+			const contents = document.querySelectorAll('.tab-content');
+			contents.forEach(content => content.classList.remove('active'));
 
-            // Reset trạng thái active của tất cả các nút bấm menu bên
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('text-white', 'bg-heritage-primary', 'border-l-4', 'border-heritage-gold');
-                btn.classList.add('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
-            });
+			// Khởi tạo lại trạng thái nút bấm
+			const buttons = document.querySelectorAll('.tab-btn');
+			buttons.forEach(btn => {
+				btn.classList.remove('text-white', 'bg-heritage-primary', 'border-b-2', 'md:border-b-0', 'md:border-l-4', 'border-heritage-gold');
+				btn.classList.add('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
+			});
 
-            // Kích hoạt nội dung tab được chọn [cite: 87]
-            document.getElementById(tabId).classList.add('active');
+			// Hiện tab được chọn
+			document.getElementById(tabId).classList.add('active');
 
-            // Kích hoạt style active cho nút được click
-            const clickedBtn = event.currentTarget;
-            clickedBtn.classList.remove('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
-            clickedBtn.classList.add('text-white', 'bg-heritage-primary', 'border-l-4', 'border-heritage-gold');
-        }
+			// Áp dụng class active thông minh tương thích cả Mobile lẫn PC
+			const clickedBtn = event.currentTarget;
+			clickedBtn.classList.remove('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
+			clickedBtn.classList.add('text-white', 'bg-heritage-primary', 'border-b-2', 'md:border-b-0', 'md:border-l-4', 'border-heritage-gold');
+			
+			// Tự động cuộn mượt nút được chọn vào vùng nhìn thấy nếu bị khuất (trên mobile)
+			clickedBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+		}
     </script>
 </body>
 </html>
