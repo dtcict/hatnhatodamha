@@ -147,33 +147,46 @@
             </div>
 
             <div id="tab-audio" class="tab-content space-y-6">
-                <div class="border-b border-heritage-gold/20 pb-4">
-                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 4 [cite: 11]</span>
-                    <h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Kho Dữ Liệu Âm Thanh</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-                    <div class="md:col-span-5 bg-heritage-panel p-6 border border-heritage-gold/30 rounded-sm text-center space-y-4">
-                        <div class="w-28 h-28 bg-heritage-primary mx-auto rounded-full flex items-center justify-center border-4 border-heritage-gold/40 shadow-inner">
-                            <svg class="w-12 h-12 text-heritage-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-                        </div>
-                        <div>
-                            <h3 id="audio-title" class="font-serif text-base font-bold text-heritage-primary">Đang chọn: Hát tế Thần Thành Hoàng</h3>
-                            <p class="text-xs text-stone-500 mt-1">Giáo phường cổ truyền thực hiện</p>
-                        </div>
-                        <audio id="player" controls class="w-full h-8 accent-heritage-primary mt-2"></audio>
-                    </div>
-                    <div class="md:col-span-7 bg-white border border-heritage-gold/20 rounded-sm divide-y divide-heritage-gold/10 overflow-hidden shadow-sm">
-                        <div class="p-4 flex justify-between items-center hover:bg-heritage-gold/5 cursor-pointer text-sm">
-                            <span class="font-medium">1. Lối hát Chúc, hát tế cung kính Thần Thành Hoàng [cite: 26]</span>
-                            <span class="text-xs text-stone-400">04:35</span>
-                        </div>
-                        <div class="p-4 flex justify-between items-center hover:bg-heritage-gold/5 cursor-pointer text-sm">
-                            <span class="font-medium">2. Giọng hát Chơi giải trí sau kì đại tế khóa đình [cite: 26]</span>
-                            <span class="text-xs text-stone-400">06:12</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="border-b border-heritage-gold/20 pb-4">
+					<span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 4</span>
+					<h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Kho Dữ Liệu Âm Thanh</h2>
+				</div>
+
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+					
+					<div class="lg:col-span-3 bg-heritage-panel p-5 border border-heritage-gold/30 rounded-sm text-center space-y-4 shadow-sm">
+						<div class="w-24 h-24 bg-heritage-primary mx-auto rounded-full flex items-center justify-center border-4 border-heritage-gold/40 shadow-inner">
+							<svg class="w-10 h-10 text-heritage-gold animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+							</svg>
+						</div>
+						<div>
+							<h3 id="audio-title" class="font-serif text-sm font-bold text-heritage-primary line-clamp-2">Đang chọn: Chưa có bài hát</h3>
+							<p class="text-[11px] text-stone-500 mt-1">Giáo phường cổ truyền thực hiện</p>
+						</div>
+						<audio id="player" controls class="w-full h-8 accent-heritage-primary mt-2"></audio>
+					</div>
+
+					<div class="lg:col-span-5 space-y-2">
+						<span class="text-xs font-bold text-stone-500 uppercase tracking-wider block">Danh sách bài diễn xướng</span>
+						<div id="audio-list-container" class="bg-white border border-heritage-gold/20 rounded-sm divide-y divide-heritage-gold/10 overflow-y-auto h-[380px] custom-scrollbar shadow-sm">
+							</div>
+					</div>
+
+					<div class="lg:col-span-4 space-y-2">
+						<span class="text-xs font-bold text-stone-500 uppercase tracking-wider block">Lời bài hát / Bản dịch nghĩa</span>
+						<div class="bg-[#F2EDE4] border border-heritage-gold/30 p-5 rounded-sm shadow-inner h-[380px] overflow-y-auto custom-scrollbar flex flex-col justify-between">
+							<div id="lyrics-content" class="text-center font-serif text-sm text-heritage-dark/90 leading-relaxed whitespace-pre-line italic">
+								Chọn một bài hát bên cạnh để xem lời và ý nghĩa diễn xướng văn hóa cổ truyền.
+							</div>
+							<div class="border-t border-heritage-gold/20 pt-3 mt-4 text-center">
+								<span class="text-[10px] text-stone-500 font-sans tracking-wide">Trích hệ thống văn bản tư liệu Nôm cổ</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
 
             <div id="tab-hinh-anh" class="tab-content space-y-6">
                 <div class="border-b border-heritage-gold/20 pb-4">
@@ -250,7 +263,97 @@
 			
 			// Tự động cuộn mượt nút được chọn vào vùng nhìn thấy nếu bị khuất (trên mobile)
 			clickedBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-		}
+			}
+			// 1. KHO DỮ LIỆU JSON CHỨA DANH SÁCH BÀI HÁT (Bạn điền tiếp các bài của bạn vào đây)
+			const playlist = [
+				{
+					id: 1,
+					title: "Lối hát Chúc, hát tế cung kính Thần Thành Hoàng",
+					duration: "04:35",
+					src: "audio/hat-te-thanh-hoang.mp3", // Thay bằng đường dẫn file nhạc của bạn
+					lyrics: `[Giọng hát tế cung kính]\n\nThương hải tang điền kỷ độ qua,\nThần linh hiển hách hộ dân ta.\nCửa đình bảng lảng hương trầm tỏa,\nNhịp phách rộn ràng khúc khải ca.\n\n(Dịch nghĩa: Trải qua bao biến thiên dâu bể, Thần linh vẫn linh thiêng bảo vệ xóm làng. Trước cửa đình khói hương trầm bay tỏa, nhịp phách ngân vang ca ngợi công đức thánh thần).`
+				},
+				{
+					id: 2,
+					title: "Giọng hát Chơi giải trí sau kì đại tế khóa đình",
+					duration: "06:12",
+					src: "audio/hat-choi-giai-tri.mp3",
+					lyrics: `[Lối hát chơi phóng khoáng]\n\nGió mát trăng thanh cảnh hữu tình,\nRượu nồng một chén chúc khang ninh.\nĐào nương thỏa sức buông câu hát,\nTình làng nghĩa xóm trọn niềm tin.\n\n(Dịch nghĩa: Khung cảnh đêm lành gió mát trăng thanh, nâng chén rượu nồng chúc nhau bình an mạnh khỏe. Các cô đào nương thỏa chí ca hát, thắt chặt thêm tình làng nghĩa xóm bền chặt).`
+				},
+				// Bạn có thể copy cấu trúc này để thêm tiếp bài số 3, 4, 5... đến bài 60 thoải mái nhé
+			];
+
+			// 2. HÀM TỰ ĐỘNG RENDER (BƠM) DANH SÁCH BÀI HÁT RA GIAO DIỆN TĨNH
+			function renderPlaylist() {
+				const listContainer = document.getElementById('audio-list-container');
+				listContainer.innerHTML = ''; // Xóa sạch dữ liệu cũ
+
+				playlist.forEach((track, index) => {
+					// Tạo phần tử div cho từng bài hát
+					const trackItem = document.createElement('div');
+					// Thêm các class Tailwind CSS định hình style và hiệu ứng hover
+					trackItem.className = `track-item p-4 flex justify-between items-center hover:bg-heritage-gold/10 cursor-pointer text-xs md:text-sm transition-all duration-300 border-b border-heritage-gold/5`;
+					trackItem.setAttribute('data-id', track.id);
+					trackItem.innerHTML = `
+						<div class="flex items-center space-x-3 pr-2">
+							<span class="font-serif font-bold text-heritage-gold min-w-[20px]">${index + 1}</span>
+							<span class="font-medium text-heritage-dark line-clamp-1">${track.title}</span>
+						</div>
+						<span class="text-xs text-stone-400 shrink-0">${track.duration}</span>
+					`;
+					
+					// Gắn sự kiện click để kích hoạt phát nhạc và đổi lời
+					trackItem.addEventListener('click', () => playTrack(track.id));
+					listContainer.appendChild(trackItem);
+				});
+			}
+
+			// 3. HÀM XỬ LÝ LOGIC PHÁT NHẠC, ĐỔI TIÊU ĐỀ VÀ CẬP NHẬT LỜI BÀI HÁT
+			function playTrack(trackId) {
+				// Tìm bài hát chuẩn xác trong mảng playlist theo ID
+				const track = playlist.find(t => t.id === trackId);
+				if (!track) return;
+
+				const player = document.getElementById('player');
+				const titleElement = document.getElementById('audio-title');
+				const lyricsElement = document.getElementById('lyrics-content');
+
+				// Cập nhật nguồn nhạc, tiêu đề và lời bài hát
+				player.src = track.src;
+				titleElement.innerText = "Đang phát: " + track.title;
+				lyricsElement.innerText = track.lyrics;
+
+				// Xử lý đổi màu nền (Active) làm nổi bật bài đang được chọn trong danh sách
+				document.querySelectorAll('.track-item').forEach(item => {
+					item.classList.remove('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+				});
+				const activeItem = document.querySelector(`.track-item[data-id="${trackId}"]`);
+				if (activeItem) {
+					activeItem.classList.add('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+				}
+
+				// Tự động kích hoạt phát nhạc ngay lập tức
+				player.play();
+			}
+
+			// 4. CHẠY KHỞI TẠO NGAY KHI TRANG WEB ĐƯỢC TẢI XONG
+			document.addEventListener("DOMContentLoaded", () => {
+				renderPlaylist();
+				
+				// Mặc định nạp trước bài đầu tiên trong danh sách nhưng chưa bấm phát dữ liệu
+				if(playlist.length > 0) {
+					const firstTrack = playlist[0];
+					document.getElementById('player').src = firstTrack.src;
+					document.getElementById('audio-title').innerText = "Đang chọn: " + firstTrack.title;
+					document.getElementById('lyrics-content').innerText = firstTrack.lyrics;
+					
+					// Tạo vệt màu highlight nhẹ cho bài số 1
+					setTimeout(() => {
+						const firstItem = document.querySelector('.track-item[data-id="1"]');
+						if (firstItem) firstItem.classList.add('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+					}, 200);
+				}
+			});
     </script>
 </body>
 </html>
