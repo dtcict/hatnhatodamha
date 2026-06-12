@@ -1,397 +1,359 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hát Múa Cửa Đình - Di Sản Văn Hóa Tâm Linh</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            heritage: { bg: '#F9F6F0', primary: '#8B1E0F', gold: '#D4AF37', dark: '#2C2523' }
-                        },
-                        fontFamily: {
-                            serif: ['"Playfair Display"', 'serif'],
-                            sans: ['"Inter"', 'sans-serif']
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Không Gian Số Hóa Di Sản - Hát Múa Cửa Đình</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        heritage: {
+                            bg: '#F9F6F0',       // Vàng kem giấy sắc phong [cite: 35]
+                            primary: '#8B1E0F',  // Đỏ son đình chùa [cite: 37]
+                            gold: '#D4AF37',     // Vàng đồng tâm linh [cite: 39]
+                            dark: '#2C2523',     // Nâu sẫm [cite: 41]
+                            panel: '#F1EAE0'     // Nền panel nhẹ nhàng
                         }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'], // Cho tiêu đề [cite: 44]
+                        sans: ['"Inter"', 'sans-serif']         // Cho nội dung [cite: 44]
                     }
                 }
             }
-        </script>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    </head>
-    <body class="bg-heritage-bg text-heritage-dark font-sans selection:bg-heritage-gold selection:text-white">
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Tùy chỉnh thanh cuộn cho danh sách nội dung */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+        /* Trạng thái ẩn/hiện của Tab */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-heritage-bg text-heritage-dark font-sans h-full overflow-hidden flex flex-col md:flex-row">
 
-        <header class="sticky top-0 z-50 bg-heritage-bg/95 backdrop-blur-md border-b border-heritage-gold/20 shadow-sm transition-all duration-300">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                <a href="#" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 border-2 border-heritage-primary rounded-sm flex items-center justify-center rotate-45 group-hover:border-heritage-gold transition-colors duration-500">
-                        <span class="font-serif font-bold text-heritage-primary group-hover:text-heritage-gold -rotate-45 transition-colors duration-500 text-lg">H</span>
-                    </div>
-                    <div>
-                        <span class="font-serif text-xl font-bold tracking-wide text-heritage-primary block">HÁT MÚA CỬA ĐÌNH</span>
-                        <span class="text-xs tracking-widest text-heritage-dark/60 block uppercase font-medium">Di sản văn hóa phi vật thể</span>
-                    </div>
-                </a>
-
-                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-                    <a href="#khoi-nguon" class="text-heritage-primary border-b-2 border-heritage-primary px-1 py-2">Trang Chủ</a>
-                    <a href="#thuoc-phim" class="text-heritage-dark/80 hover:text-heritage-primary px-1 py-2 transition-colors duration-300">Phim & Video</a>
-                    <a href="#khong-gian-anh" class="text-heritage-dark/80 hover:text-heritage-primary px-1 py-2 transition-colors duration-300">Thư viện Ảnh</a>
-                    <a href="#giai-dieu" class="text-heritage-dark/80 hover:text-heritage-primary px-1 py-2 transition-colors duration-300">Kho Audio</a>
-                    <a href="#hoc-thuat" class="text-heritage-dark/80 hover:text-heritage-primary px-1 py-2 transition-colors duration-300">Sách Điện Tử</a>
-                </nav>
-
-                <div class="hidden lg:block">
-                    <a href="#lien-he" class="inline-flex items-center justify-center px-4 py-2 border border-heritage-primary text-xs font-semibold uppercase tracking-widest text-heritage-primary hover:bg-heritage-primary hover:text-white transition-all duration-500 rounded-sm">
-                        Ban Quản Lý
-                    </a>
+    <aside class="w-full md:w-80 bg-heritage-dark text-stone-300 flex flex-col md:justify-between border-b md:border-b-0 md:border-r border-heritage-gold/30 shrink-0 z-50 shadow-xl">
+        
+        <div class="p-4 md:p-6 border-b border-stone-800 flex items-center space-x-3 justify-between md:justify-start">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 md:w-10 md:h-10 border-2 border-heritage-gold rounded-sm flex items-center justify-center rotate-45 shrink-0">
+                    <span class="font-serif font-bold text-heritage-gold -rotate-45 text-sm md:text-lg">Đ</span>
+                </div>
+                <div>
+                    <h1 class="font-serif text-sm md:text-lg font-bold tracking-wide text-white leading-tight">HÁT MÚA CỬA ĐÌNH</h1>
+                    <p class="text-[9px] md:text-[10px] tracking-widest text-heritage-gold uppercase font-semibold block md:inline">Bảng Số Hóa Di Sản</p>
                 </div>
             </div>
-        </header>
-        <main>
-            <section class="relative h-[85vh] flex items-center justify-center bg-zinc-900 overflow-hidden">
-                <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center transition-transform duration-[10000ms] scale-105 hover:scale-100" style="background-image: url('https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80&w=1920');"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/50 z-10"></div>
+            <span class="md:hidden text-[10px] bg-stone-800 text-heritage-gold px-2 py-0.5 rounded-sm border border-heritage-gold/20">Tư liệu</span>
+        </div>
 
-                <div class="relative z-20 max-w-4xl mx-auto px-4 text-center text-white">
-                    <span class="inline-block text-heritage-gold font-medium tracking-widest uppercase text-xs sm:text-sm mb-4 border-b border-heritage-gold/30 pb-2">Nghệ thuật ca trù thờ thần linh</span>
-                    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-                        Hát Nhà Tơ — <br class="sm:hidden"><span class="text-heritage-gold">Hát Múa Cửa Đình</span>
-                    </h1>
-                    <p class="font-serif italic text-base sm:text-xl text-zinc-300/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                        "Giao hòa giữa âm nhạc cổ truyền mang âm hưởng cung đình tôn nghiêm và không gian văn hóa tâm linh làng quê Việt cổ."
-                    </p>
-                    <a href="#khoi-nguon" class="inline-flex items-center justify-center px-8 py-3 bg-heritage-primary hover:bg-heritage-primary/90 text-white font-medium text-sm tracking-wide rounded-sm shadow-xl transition-all duration-500 ease-in-out group transform hover:-translate-y-0.5">
-                        Khám phá ngay
-                        <svg class="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                    </a>
+        <nav class="flex flex-row md:flex-col overflow-x-auto md:overflow-x-hidden md:overflow-y-auto px-2 md:px-4 py-2 md:py-6 gap-2 shrink-0 custom-scrollbar whitespace-nowrap md:whitespace-normal">
+            
+            <button onclick="switchTab(event, 'tab-tong-quan')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-white bg-heritage-primary border-b-2 md:border-b-0 md:border-l-4 border-heritage-gold shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span>Tổng quan</span>
+            </button>
+
+            <button onclick="switchTab(event, 'tab-video')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <span>Phim & Video</span>
+            </button>
+
+            <button onclick="switchTab(event, 'tab-audio')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                <span>Kho Audio</span>
+            </button>
+
+            <button onclick="switchTab(event, 'tab-hinh-anh')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span>Thư viện Ảnh</span>
+            </button>
+
+            <button onclick="switchTab(event, 'tab-ebook')" class="tab-btn inline-flex md:flex items-center space-x-2 md:space-x-3 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 text-stone-400 hover:text-white hover:bg-stone-800 shrink-0">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <span>Sách E-Book</span>
+            </button>
+        </nav>
+
+        <div class="hidden md:block p-4 border-t border-stone-800 text-center text-[11px] text-stone-500">
+            <p>&copy; 2026 Hát Múa Cửa Đình</p>
+            <p class="text-heritage-gold/60 mt-1">Hệ thống lưu trữ số hóa</p>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-8 min-h-0 overflow-y-auto custom-scrollbar relative flex flex-col justify-between">
+        
+        <div class="w-full max-w-6xl mx-auto flex-1">
+            <div id="tab-tong-quan" class="tab-content active space-y-6">
+                <div class="border-b border-heritage-gold/20 pb-4">
+                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Tổng quan tư liệu</span>
+                    <h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Hát Nhà Tơ — Hát Múa Cửa Đình</h2>
                 </div>
-            </section>
-
-            <section id="khoi-nguon" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-heritage-gold/10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5 space-y-6">
-                        <div class="space-y-2">
-                            <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">01 / Khởi Nguồn</span>
-                            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-heritage-primary">Giai điệu thờ Thần</h2>
-                        </div>
-                        <div class="w-16 h-0.5 bg-heritage-gold"></div>
-                        <p class="text-heritage-dark/80 text-justify leading-relaxed">
-                            Hát nhà tơ – Hát múa cửa đình là hình thức nghệ thuật ca trù diễn xướng tâm linh thờ thần đặc sắc, gắn liền với tín ngưỡng dân gian và không gian hội đình làng cổ xưa. Những cung đàn, nhịp phách ngân lên không chỉ thể hiện tấm lòng tôn kính cầu chúc quốc thái dân an, mà còn kết tinh giá trị văn hóa độc bản qua nhiều thế hệ lịch sử.
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-justify leading-relaxed text-sm md:text-base">
+                            Hát nhà tơ – Hát múa cửa đình là một thể loại diễn xướng nghi lễ thờ thần tại các vùng cửa đình xa xưa[cite: 15]. Đây là sự giao thoa hoàn hảo giữa âm nhạc cung đình tôn nghiêm và nét mộc mạc của làng quê Việt Nam[cite: 32]. Trang web này lưu trữ toàn bộ các tư liệu quý báu nhằm bảo tồn và lan tỏa giá trị tâm linh độc độc đáo này[cite: 5].
                         </p>
-                    </div>
-                    <div class="lg:col-span-7">
-                        <div class="relative aspect-video bg-zinc-900 rounded-sm shadow-2xl overflow-hidden group border border-heritage-gold/20">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Trailer Giới thiệu Hát nhà tơ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="p-4 bg-heritage-panel border-l-4 border-heritage-gold rounded-sm">
+                            <p class="font-serif italic text-sm text-heritage-dark/90">
+                                "Giai điệu thanh thoát hòa quyện cùng tiếng gõ phách giòn giã và tiếng đàn đáy trầm ấm..."
+                            </p>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section id="thuoc-phim" class="py-16 bg-stone-900 text-stone-100 border-b border-heritage-gold/20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    
-                    <div class="text-center mb-12">
-                        <span class="text-heritage-gold font-serif italic text-sm block mb-2">🎞️ Thư Viện Đa Phương Tiện</span>
-                        <h2 class="font-serif text-3xl md:text-4xl font-bold tracking-wide text-white uppercase">
-                            Thước Phim Tư Liệu
-                        </h2>
-                        <div class="w-24 h-0.5 bg-heritage-gold mx-auto mt-4"></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                        
-                        <div class="lg:col-span-2 space-y-4">
-                            <div class="relative aspect-video w-full bg-black rounded-sm overflow-hidden border border-heritage-gold/30 shadow-2xl">
-                                <iframe 
-                                    id="main-video-player"
-                                    class="absolute top-0 left-0 w-full h-full"
-                                    src="" 
-                                    title="YouTube video player" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            
-                            <div class="p-5 bg-stone-950/60 border-l-4 border-heritage-primary rounded-r-sm backdrop-blur-sm">
-                                <h3 id="video-display-title" class="font-serif text-xl font-bold text-heritage-gold mb-2">
-                                    Đang tải tiêu đề...
-                                </h3>
-                                <p id="video-display-desc" class="text-sm text-stone-400 leading-relaxed whitespace-pre-line">
-                                    Đang tải mô tả thước phim di sản...
-                                </p>
-                            </div>
+                    <div class="lg:col-span-5">
+                        <div class="aspect-video bg-zinc-900 border border-heritage-gold/30 rounded-sm overflow-hidden shadow-md">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Trailer" frameborder="0" allowfullscreen></iframe>
                         </div>
-
-                        <div class="bg-stone-950/80 border border-stone-800 rounded-sm p-4 backdrop-blur-md">
-                            <div class="flex justify-between items-center pb-3 mb-3 border-b border-stone-800">
-                                <span class="font-serif text-sm font-bold text-heritage-gold tracking-wide uppercase">Danh sách tư liệu</span>
-                                <span id="video-counter" class="text-xs bg-stone-900 text-stone-400 px-2 py-0.5 rounded-sm border border-stone-800">0/0 tệp</span>
-                            </div>
-                            
-                            <div id="video-playlist-container" class="space-y-2 max-h-[460px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-stone-800">
-                                </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-            <section id="giai-dieu" class="py-20 bg-heritage-dark text-stone-300 border-b border-heritage-gold/20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    
-                    <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                        <span class="text-heritage-gold text-xs uppercase tracking-widest font-bold block">03 / Âm giai cổ cốt</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Thanh Âm Cửa Đình</h2>
-                        <p class="text-stone-400 text-xs tracking-wide uppercase font-medium">Hệ thống số hóa làn điệu Hát nhà tơ - Hát múa cửa đình</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                        
-                        <div class="lg:col-span-4 bg-stone-900/60 border border-heritage-gold/20 p-4 sm:p-6 rounded-sm text-center space-y-4 lg:space-y-6 lg:sticky lg:top-24">
-                            
-                            <div id="audio-disk-wrapper" class="hidden lg:block relative w-40 h-40 mx-auto rounded-full border-2 border-heritage-gold/30 p-2 overflow-hidden bg-stone-900 flex items-center justify-center">
-                                <div id="audio-disk" class="w-full h-full rounded-full bg-cover bg-center transition-transform duration-1000 ease-linear" style="background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&q=80&w=300');"></div>
-                                <div class="absolute w-8 h-8 bg-stone-900 rounded-full border border-heritage-gold/40 flex items-center justify-center">
-                                    <div class="w-2 h-2 bg-heritage-gold rounded-full"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="text-left lg:text-center flex lg:flex-col justify-between items-center lg:justify-center">
-                                <div class="min-w-0 flex-1 pr-4 lg:pr-0">
-                                    <h3 id="current-audio-title" class="font-serif text-base lg:text-xl font-bold text-heritage-gold tracking-wide truncate">Chọn điệu hát...</h3>
-                                    <p id="current-audio-author" class="text-[11px] lg:text-xs text-stone-400 mt-0.5">Giáo phường Đầm Hà</p>
-                                </div>
-                                
-                                <audio id="main-audio-player" src=""></audio>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 items-center pt-2 border-t border-stone-800/60 lg:border-none lg:pt-0">
-                                <div class="space-y-1">
-                                    <input id="audio-progress" type="range" min="0" max="100" value="0" class="w-full h-1 bg-stone-700 accent-heritage-gold rounded-lg cursor-pointer">
-                                    <div class="flex justify-between text-[10px] font-mono text-stone-500">
-                                        <span id="time-current">00:00</span>
-                                        <span id="time-duration">00:00</span>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-center space-x-6">
-                                    <button id="btn-prev-audio" class="text-stone-400 hover:text-heritage-gold transition-colors" title="Bài trước">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-5 lg:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.334 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"/></svg>
-                                    </button>
-                                    <button id="btn-play-audio" class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-heritage-primary text-white flex items-center justify-center hover:bg-heritage-primary/80 transition-all shadow-md" title="Phát / Tạm dừng">
-                                        <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 lg:h-6 lg:w-6 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
-                                        <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 lg:h-6 lg:w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"/></svg>
-                                    </button>
-                                    <button id="btn-next-audio" class="text-stone-400 hover:text-heritage-gold transition-colors" title="Bài tiếp theo">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-5 lg:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 005 8v8a1 1 0 001.6.8l5.334-4zM19.934 12.8a1 1 0 000-1.6l-5.334-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.334-4z"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lg:col-span-4 space-y-3">
-                            <div class="flex justify-between items-center px-1 border-b border-stone-800 pb-2">
-                                <span class="text-xs font-semibold uppercase tracking-wider text-heritage-gold">Danh sách làn điệu</span>
-                                <span id="audio-counter" class="text-[10px] font-mono bg-stone-800 text-stone-400 px-2 py-0.5 rounded-sm">0/20 tệp</span>
-                            </div>
-                            <div id="audio-playlist-container" class="h-[320px] lg:h-[400px] overflow-y-auto pr-2 space-y-2 scrollbar-thin scrollbar-thumb-stone-800">
-                                </div>
-                        </div>
-
-                        <div class="lg:col-span-4 bg-stone-900/40 border border-stone-800 p-4 sm:p-6 rounded-sm h-auto lg:h-[450px] flex flex-col">
-                            <div class="border-b border-stone-800 pb-2 mb-3 flex justify-between items-center">
-                                <span class="text-xs font-semibold uppercase tracking-wider text-heritage-gold">Tư liệu lời ca</span>
-                                
-                                <button id="toggle-lyric-btn" class="lg:hidden flex items-center space-x-1 text-[11px] font-semibold px-2.5 py-1 rounded bg-heritage-primary text-white hover:bg-heritage-primary/90 transition-all">
-                                    <span id="lyric-btn-text">Xem lời bài hát</span>
-                                    <svg id="lyric-btn-icon" class="w-3 h-3 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                            </div>
-                            
-                            <div id="audio-lyrics-box" class="hidden lg:flex flex-1 overflow-y-auto text-sm font-serif text-stone-400 italic space-y-4 pr-2 leading-relaxed text-center flex-col justify-center items-center max-h-[250px] lg:max-h-none py-2 border-t border-stone-800/30 lg:border-none mt-2 lg:mt-0">
-                                <p class="text-stone-500">Vui lòng chọn một điệu nhạc để xem tư liệu lời cổ bản dịch nghĩa...</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section id="khong-gian-anh" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-heritage-gold/10">
-                <div class="text-center max-w-2xl mx-auto mb-8 space-y-2">
-                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">04 / Tư liệu ảnh</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-heritage-primary">Khoảnh Khắc Cửa Đình</h2>
-                    <p class="text-heritage-dark/60 text-xs tracking-wide uppercase font-medium">Click vào ảnh để xem kích thước lớn</p>
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-2 mb-10 text-xs font-semibold uppercase tracking-wider">
-                    <button class="gallery-filter-btn active bg-heritage-primary text-white px-4 py-2 rounded-sm transition-all duration-300" data-filter="all">Tất cả ảnh</button>
-                    <button class="gallery-filter-btn border border-heritage-primary text-heritage-primary hover:bg-heritage-primary hover:text-white px-4 py-2 rounded-sm transition-all duration-300" data-filter="nhac-cu">Nhạc cụ cổ truyền</button>
-                    <button class="gallery-filter-btn border border-heritage-primary text-heritage-primary hover:bg-heritage-primary hover:text-white px-4 py-2 rounded-sm transition-all duration-300" data-filter="trang-phuc">Trang phục Đào nương</button>
-                    <button class="gallery-filter-btn border border-heritage-primary text-heritage-primary hover:bg-heritage-primary hover:text-white px-4 py-2 rounded-sm transition-all duration-300" data-filter="le-hoi">Nghi lễ & Hội đình</button>
-                </div>
-
-                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    
-                    <div class="gallery-item group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="nhac-cu">
-                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&q=80&w=800" alt="Nhạc cụ cổ truyền Đàn đáy - Linh hồn âm giai Hát múa cửa đình" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Nhạc cụ</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Nhạc cụ cổ truyền Đàn đáy</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="trang-phuc">
-                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800" alt="Trang phục Đào nương chuẩn thức với dải lụa thắt ngang lưng" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Trang phục</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Trang phục Đào nương chuẩn thức</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="le-hoi">
-                        <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&q=80&w=800" alt="Khung cảnh lễ hội rước đám trang nghiêm tại sân đại đình" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Nghi lễ hội</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Khung cảnh lễ hội rước đình đám</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="le-hoi">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800" alt="Nghệ nhân lão thành truyền dạy khóa đào nương kế cận tại giáo phường" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Nghi lễ hội</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Truyền dạy khóa nghệ nhân kế cận</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item hidden group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="nhac-cu">
-                        <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80&w=800" alt="Cận cảnh nhịp phách tre của Đào nương phối hợp giữ nhịp bài ca" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Nhạc cụ</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Gõ phách tre cổ truyền</span>
-                        </div>
-                    </div>
-
-                    <div class="gallery-item hidden group relative overflow-hidden rounded-sm shadow-md aspect-square bg-zinc-200 cursor-pointer border border-heritage-gold/10 transition-all duration-500" data-category="trang-phuc">
-                        <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&q=80&w=800" alt="Mũ thêu phượng và các chi tiết trâm cài tinh xảo của Đào chủ tế" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-heritage-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                            <span class="text-heritage-gold text-[10px] font-bold uppercase tracking-wider mb-1">Trang phục</span>
-                            <span class="text-white text-xs font-serif font-medium leading-tight">Mũ thêu và phục sức cổ cốt</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <button id="load-more-photos" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 border border-heritage-primary text-heritage-primary hover:bg-heritage-primary hover:text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-widest rounded-sm transition-all duration-500">
-                        <span>Xem thêm ảnh tư liệu</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                    </button>
-
-                    <a href="https://drive.google.com/drive/folders/1sFSG7mUEblVSoNRl_RCNntp1wsw9aXRF?usp=drive_link" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-heritage-primary border border-heritage-primary text-white hover:bg-heritage-dark hover:border-heritage-dark px-5 py-2.5 text-xs font-semibold uppercase tracking-widest rounded-sm shadow-md transition-all duration-500 group">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-heritage-gold transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.43 12.98l-6.73-11.66c-.37-.64-1.03-1.03-1.77-1.03h-.03c-.74 0-1.4.39-1.77 1.03L2.39 12.98c-.37.64-.37 1.42 0 2.06l3.35 5.79c.37.64 1.03 1.03 1.77 1.03h13.43c.74 0 1.4-.39 1.77-1.03l3.35-5.79c.37-.64.37-1.42 0-2.06l-6.63-11.49zm-8.43-9.48h1.94l5.83 10.1h-1.94l-5.83-10.1zm-4.32 11.6h3.89l-2.91 5.05H3.76l2.92-5.05zm10.12 5.05l-2.92-5.05h3.89l2.92 5.05h-3.89z"/>
-                        </svg>
-                        <span>Khám phá toàn bộ ảnh gốc (Drive)</span>
-                    </a>
-                </div>
-            </section>
-
-            <div id="photo-lightbox" class="fixed inset-0 z-[100] bg-heritage-dark/95 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex flex-col justify-center items-center p-4">
-                <button id="close-lightbox" class="absolute top-6 right-6 text-stone-400 hover:text-white transition-colors p-2 z-10" aria-label="Đóng">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
-                <div class="relative max-w-4xl max-h-[75vh] flex justify-center items-center">
-                    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[70vh] object-contain border border-heritage-gold/30 shadow-2xl rounded-sm transform scale-95 transition-transform duration-300">
-                </div>
-                <div class="mt-4 max-w-xl text-center">
-                    <p id="lightbox-caption" class="text-stone-300 font-serif text-sm tracking-wide leading-relaxed px-4"></p>
-                </div>
-            </div>
-            <section id="hoc-thuat" class="py-20 bg-stone-200/60 border-t border-heritage-gold/20 relative">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-white border border-heritage-gold/30 p-8 md:p-12 rounded-sm shadow-lg flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                        
-                        <div class="w-48 h-64 bg-heritage-primary shrink-0 rounded-sm shadow-md flex flex-col justify-between p-4 text-white border-2 border-heritage-gold/50 relative overflow-hidden">
-                            <div class="absolute inset-0 opacity-10 bg-repeat bg-contain" style="background-image: url('data:image/svg+xml,...');"></div>
-                            <div class="text-center space-y-1 relative z-10">
-                                <span class="text-[9px] tracking-widest uppercase text-heritage-gold block">Ấn bản nghiên cứu</span>
-                                <div class="w-6 h-0.5 bg-heritage-gold mx-auto my-1"></div>
-                                <h4 class="font-serif text-sm font-bold leading-tight">HÁT NHÀ TƠ KHẢO DIỆU</h4>
-                            </div>
-                            <p class="text-[9px] text-stone-300 text-center relative z-10 italic">NXB Văn Hóa Dân Tộc</p>
-                        </div>
-
-                        <div class="space-y-5 flex-1 text-center md:text-left">
-                            <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">05 / Sách điện tử</span>
-                            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-heritage-dark">Tài Liệu Nghiên Cứu Hệ Thống Di Sản</h2>
-                            <p class="text-heritage-dark/80 text-sm leading-relaxed">Cung cấp bộ sách toàn tập hệ văn bản cổ, lời ca thơ chữ Nôm dịch nghĩa, tổng phổ nhạc điệu thanh âm phục vụ chuyên tâm cho nghiên cứu học thuật sâu sắc.</p>
-                            
-                            <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
-                                
-                                <button id="btn-read-online" class="px-5 py-2.5 bg-heritage-primary hover:bg-heritage-primary/90 text-white text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors duration-300 flex items-center gap-2 shadow-sm">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                    Đọc trực tuyến
-                                </button>
-
-                                <a href="https://drive.google.com/uc?export=download&id=1uK8ptqOyqDhSlOCocX0PMAtMk3YyNzq-" class="px-5 py-2.5 border border-heritage-primary text-heritage-primary hover:bg-heritage-primary hover:text-white text-xs font-semibold uppercase tracking-wider rounded-sm transition-all duration-300 flex items-center gap-2">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                                    Tải tệp PDF
-                                </a>
-
-                                <a href="https://drive.google.com/drive/folders/1AZBM7SSgjTWR0ChzkyF5E7SyO-YGCOMT?usp=drive_link" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-heritage-dark hover:bg-stone-800 text-heritage-gold text-xs font-semibold uppercase tracking-wider rounded-sm transition-all duration-300 flex items-center gap-2 shadow-sm">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.43 12.98l-6.73-11.66c-.37-.64-1.03-1.03-1.77-1.03h-.03c-.74 0-1.4.39-1.77 1.03L2.39 12.98c-.37.64-.37 1.42 0 2.06l3.35 5.79c.37.64 1.03 1.03 1.77 1.03h13.43c.74 0 1.4-.39 1.77-1.03l3.35-5.79c.37-.64.37-1.42 0-2.06l-6.63-11.49zm-8.43-9.48h1.94l5.83 10.1h-1.94l-5.83-10.1zm-4.32 11.6h3.89l-2.91 5.05H3.76l2.92-5.05zm10.12 5.05l-2.92-5.05h3.89l2.92 5.05h-3.89z"/></svg>
-                                    Kho tài liệu tổng hợp
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div id="pdf-viewer-modal" class="fixed inset-0 z-[100] bg-stone-900/95 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex-col justify-center items-center p-2 md:p-6">
-                <div class="w-full max-w-5xl bg-stone-100 rounded-sm shadow-2xl flex flex-col h-[90vh] overflow-hidden relative">
-                    
-                    <div class="bg-heritage-dark text-heritage-gold px-4 py-3 flex justify-between items-center border-b border-heritage-gold/30">
-                        <h3 class="font-serif font-bold text-sm md:text-base truncate pr-4">Đang đọc: Tài liệu nghiên cứu di sản (PDF)</h3>
-                        <button id="close-pdf-modal" class="text-stone-400 hover:text-white transition-colors p-1 flex items-center gap-1" aria-label="Đóng">
-                            <span class="text-xs uppercase tracking-widest hidden sm:block">Đóng</span>
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                    </div>
-                    
-                    <div class="flex-1 w-full relative bg-stone-200">
-                        <iframe src="https://drive.google.com/file/d/1uK8ptqOyqDhSlOCocX0PMAtMk3YyNzq-/preview" class="absolute inset-0 w-full h-full border-0" allow="autoplay"></iframe>
+                        <span class="text-[11px] text-stone-500 text-center block mt-2">Mục 3: Video Trailer giới thiệu di sản [cite: 22]</span>
                     </div>
                 </div>
             </div>
-        </main>
 
-        <footer id="lien-he" class="bg-heritage-dark text-stone-400 py-12 border-t-2 border-heritage-gold">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-                <div class="space-y-3">
-                    <h5 class="font-serif text-base font-bold text-white tracking-wide">HÁT MÚA CỬA ĐÌNH</h5>
-                    <p class="text-xs text-stone-400/80 leading-relaxed">Trang thông tin lưu trữ số hóa dữ liệu nghệ thuật diễn xướng dân gian truyền thống Việt Nam cổ linh.</p>
+            <div id="tab-video" class="tab-content space-y-6">
+                <div class="border-b border-heritage-gold/20 pb-4">
+                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 1 & 2 [cite: 10]</span>
+                    <h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Thước Phim Tài Liệu</h2>
                 </div>
-                <div class="space-y-2">
-                    <h5 class="font-serif text-sm font-bold text-heritage-gold tracking-wide">Giáo Phường & Địa Điểm</h5>
-                    <p class="text-xs">Hệ thống Đền/Đình diễn ra lễ hội hội bơi, tế múa các Đào nương.</p>
-                    <p class="text-xs text-stone-500">Nguồn dữ liệu: Ban quản lý bảo tồn di sản văn hóa.</p>
-                </div>
-                <div class="space-y-2 text-xs md:text-right">
-                    <p>&copy; 2026 Di sản Hát múa cửa đình Việt Nam.</p>
-                    <p>Thiết kế tĩnh tối ưu bằng HTML5 & Tailwind CSS.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 space-y-3">
+                        <div class="aspect-video bg-zinc-900 border border-heritage-gold/20 rounded-sm overflow-hidden shadow-lg">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Phim tài liệu chính" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-heritage-primary">Phim tài liệu giới thiệu về Di sản Hát nhà tơ, Hát cửa Đình [cite: 24]</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold text-stone-500 uppercase tracking-wider block">Các video phân đoạn [cite: 24]</span>
+                        <div class="space-y-3 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+                            <div class="p-3 bg-heritage-panel hover:bg-heritage-gold/10 rounded-sm border border-heritage-gold/10 flex space-x-3 cursor-pointer">
+                                <div class="w-24 aspect-video bg-stone-400 shrink-0 rounded-sm"></div>
+                                <h4 class="text-xs font-serif font-bold line-clamp-2">Lối hát tế Thần linh cổ cốt</h4>
+                            </div>
+                            <div class="p-3 bg-heritage-panel hover:bg-heritage-gold/10 rounded-sm border border-heritage-gold/10 flex space-x-3 cursor-pointer">
+                                <div class="w-24 aspect-video bg-stone-400 shrink-0 rounded-sm"></div>
+                                <h4 class="text-xs font-serif font-bold line-clamp-2">Nghệ thuật múa bài bông dâng hoa</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div id="tab-audio" class="tab-content space-y-6">
+				<div class="border-b border-heritage-gold/20 pb-4">
+					<span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 4</span>
+					<h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Kho Dữ Liệu Âm Thanh</h2>
+				</div>
+
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+					
+					<div class="lg:col-span-3 bg-heritage-panel p-5 border border-heritage-gold/30 rounded-sm text-center space-y-4 shadow-sm">
+						<div class="w-24 h-24 bg-heritage-primary mx-auto rounded-full flex items-center justify-center border-4 border-heritage-gold/40 shadow-inner">
+							<svg class="w-10 h-10 text-heritage-gold animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+							</svg>
+						</div>
+						<div>
+							<h3 id="audio-title" class="font-serif text-sm font-bold text-heritage-primary line-clamp-2">Đang chọn: Chưa có bài hát</h3>
+							<p class="text-[11px] text-stone-500 mt-1">Giáo phường cổ truyền thực hiện</p>
+						</div>
+						<audio id="player" controls class="w-full h-8 accent-heritage-primary mt-2"></audio>
+					</div>
+
+					<div class="lg:col-span-5 space-y-2">
+						<span class="text-xs font-bold text-stone-500 uppercase tracking-wider block">Danh sách bài diễn xướng</span>
+						<div id="audio-list-container" class="bg-white border border-heritage-gold/20 rounded-sm divide-y divide-heritage-gold/10 overflow-y-auto h-[380px] custom-scrollbar shadow-sm">
+							</div>
+					</div>
+
+					<div class="lg:col-span-4 space-y-2">
+						<span class="text-xs font-bold text-stone-500 uppercase tracking-wider block">Lời bài hát / Bản dịch nghĩa</span>
+						<div class="bg-[#F2EDE4] border border-heritage-gold/30 p-5 rounded-sm shadow-inner h-[380px] overflow-y-auto custom-scrollbar flex flex-col justify-between">
+							<div id="lyrics-content" class="text-center font-serif text-sm text-heritage-dark/90 leading-relaxed whitespace-pre-line italic">
+								Chọn một bài hát bên cạnh để xem lời và ý nghĩa diễn xướng văn hóa cổ truyền.
+							</div>
+							<div class="border-t border-heritage-gold/20 pt-3 mt-4 text-center">
+								<span class="text-[10px] text-stone-500 font-sans tracking-wide">Trích hệ thống văn bản tư liệu Nôm cổ</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+            <div id="tab-hinh-anh" class="tab-content space-y-6">
+                <div class="border-b border-heritage-gold/20 pb-4">
+                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 6 [cite: 12]</span>
+                    <h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Thư Viện Ảnh Tư Liệu</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div class="relative overflow-hidden group border border-heritage-gold/20 rounded-sm aspect-square bg-stone-300">
+                        <div class="absolute inset-0 bg-heritage-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 z-10">
+                            <span class="text-white text-xs font-serif">Nhạc cụ Đàn đáy cổ [cite: 27]</span>
+                        </div>
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&q=80&w=500');"></div>
+                    </div>
+                    <div class="relative overflow-hidden group border border-heritage-gold/20 rounded-sm aspect-square bg-stone-300">
+                        <div class="absolute inset-0 bg-heritage-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 z-10">
+                            <span class="text-white text-xs font-serif">Trang phục Đào nương [cite: 27]</span>
+                        </div>
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=500');"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-ebook" class="tab-content space-y-6">
+                <div class="border-b border-heritage-gold/20 pb-4">
+                    <span class="text-heritage-primary text-xs uppercase tracking-widest font-bold block">Mục 5 [cite: 13]</span>
+                    <h2 class="font-serif text-3xl font-bold text-heritage-primary mt-1">Sách Điện Tử Học Thuật</h2>
+                </div>
+                <div class="bg-heritage-panel border border-heritage-gold/30 p-6 rounded-sm flex flex-col sm:flex-row items-center gap-6 max-w-2xl">
+                    <div class="w-36 h-48 bg-heritage-primary text-white border-2 border-heritage-gold p-3 flex flex-col justify-between shadow-md shrink-0">
+                        <span class="text-[8px] tracking-widest uppercase text-heritage-gold">Nghiên cứu</span>
+                        <h4 class="font-serif text-xs font-bold text-center leading-tight">HÁT NHÀ TƠ KHẢO DIỆU</h4>
+                        <span class="text-[8px] text-center text-stone-300">Ấn bản số hóa</span>
+                    </div>
+                    <div class="space-y-3 text-center sm:text-left">
+                        <h3 class="font-serif text-lg font-bold text-heritage-dark">Sách điện tử hệ thống văn bản cổ</h3>
+                        <p class="text-xs leading-relaxed text-stone-600">
+                            Bao gồm hệ thống toàn văn lời ca chữ Nôm cổ, tổng phổ âm luật được dịch nghĩa chuẩn xác phục vụ công tác nghiên cứu khoa học chuyên sâu[cite: 77].
+                        </p>
+                        <div class="flex justify-center sm:justify-start gap-3 pt-1">
+                            <button class="px-4 py-2 bg-heritage-primary text-white text-xs font-semibold rounded-sm hover:bg-heritage-primary/90 transition-colors">Đọc trực tuyến [cite: 30]</button>
+                            <button class="px-4 py-2 border border-heritage-primary text-heritage-primary text-xs font-semibold rounded-sm hover:bg-heritage-primary hover:text-white transition-all">Tải PDF [cite: 30]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="w-full max-w-6xl mx-auto border-t border-heritage-gold/20 pt-4 mt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-2">
+            <p>Thông tin Ban quản lý Giáo phường & Nghệ nhân di sản di tich Đền/Đình[cite: 14].</p>
+            <p>Trình duyệt tĩnh tối ưu bởi Tailwind CSS[cite: 4].</p>
         </footer>
+    </main>
 
-    <script src="js/gallery.js"></script>
-    <script src="js/audio.js"></script>
-    <script src="js/video.js"></script>
-    <script src="js/book.js"></script>
-    </body>
+    <script>
+        function switchTab(event, tabId) {
+			// Ẩn toàn bộ nội dung tab
+			const contents = document.querySelectorAll('.tab-content');
+			contents.forEach(content => content.classList.remove('active'));
+
+			// Khởi tạo lại trạng thái nút bấm
+			const buttons = document.querySelectorAll('.tab-btn');
+			buttons.forEach(btn => {
+				btn.classList.remove('text-white', 'bg-heritage-primary', 'border-b-2', 'md:border-b-0', 'md:border-l-4', 'border-heritage-gold');
+				btn.classList.add('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
+			});
+
+			// Hiện tab được chọn
+			document.getElementById(tabId).classList.add('active');
+
+			// Áp dụng class active thông minh tương thích cả Mobile lẫn PC
+			const clickedBtn = event.currentTarget;
+			clickedBtn.classList.remove('text-stone-400', 'hover:text-white', 'hover:bg-stone-800');
+			clickedBtn.classList.add('text-white', 'bg-heritage-primary', 'border-b-2', 'md:border-b-0', 'md:border-l-4', 'border-heritage-gold');
+			
+			// Tự động cuộn mượt nút được chọn vào vùng nhìn thấy nếu bị khuất (trên mobile)
+			clickedBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+			}
+			// 1. KHO DỮ LIỆU JSON CHỨA DANH SÁCH BÀI HÁT (Bạn điền tiếp các bài của bạn vào đây)
+			const playlist = [
+				{
+					id: 1,
+					title: "Lối hát Chúc, hát tế cung kính Thần Thành Hoàng",
+					duration: "04:35",
+					src: "audio/hat-te-thanh-hoang.mp3", // Thay bằng đường dẫn file nhạc của bạn
+					lyrics: `[Giọng hát tế cung kính]\n\nThương hải tang điền kỷ độ qua,\nThần linh hiển hách hộ dân ta.\nCửa đình bảng lảng hương trầm tỏa,\nNhịp phách rộn ràng khúc khải ca.\n\n(Dịch nghĩa: Trải qua bao biến thiên dâu bể, Thần linh vẫn linh thiêng bảo vệ xóm làng. Trước cửa đình khói hương trầm bay tỏa, nhịp phách ngân vang ca ngợi công đức thánh thần).`
+				},
+				{
+					id: 2,
+					title: "Giọng hát Chơi giải trí sau kì đại tế khóa đình",
+					duration: "06:12",
+					src: "audio/hat-choi-giai-tri.mp3",
+					lyrics: `[Lối hát chơi phóng khoáng]\n\nGió mát trăng thanh cảnh hữu tình,\nRượu nồng một chén chúc khang ninh.\nĐào nương thỏa sức buông câu hát,\nTình làng nghĩa xóm trọn niềm tin.\n\n(Dịch nghĩa: Khung cảnh đêm lành gió mát trăng thanh, nâng chén rượu nồng chúc nhau bình an mạnh khỏe. Các cô đào nương thỏa chí ca hát, thắt chặt thêm tình làng nghĩa xóm bền chặt).`
+				},
+				// Bạn có thể copy cấu trúc này để thêm tiếp bài số 3, 4, 5... đến bài 60 thoải mái nhé
+			];
+
+			// 2. HÀM TỰ ĐỘNG RENDER (BƠM) DANH SÁCH BÀI HÁT RA GIAO DIỆN TĨNH
+			function renderPlaylist() {
+				const listContainer = document.getElementById('audio-list-container');
+				listContainer.innerHTML = ''; // Xóa sạch dữ liệu cũ
+
+				playlist.forEach((track, index) => {
+					// Tạo phần tử div cho từng bài hát
+					const trackItem = document.createElement('div');
+					// Thêm các class Tailwind CSS định hình style và hiệu ứng hover
+					trackItem.className = `track-item p-4 flex justify-between items-center hover:bg-heritage-gold/10 cursor-pointer text-xs md:text-sm transition-all duration-300 border-b border-heritage-gold/5`;
+					trackItem.setAttribute('data-id', track.id);
+					trackItem.innerHTML = `
+						<div class="flex items-center space-x-3 pr-2">
+							<span class="font-serif font-bold text-heritage-gold min-w-[20px]">${index + 1}</span>
+							<span class="font-medium text-heritage-dark line-clamp-1">${track.title}</span>
+						</div>
+						<span class="text-xs text-stone-400 shrink-0">${track.duration}</span>
+					`;
+					
+					// Gắn sự kiện click để kích hoạt phát nhạc và đổi lời
+					trackItem.addEventListener('click', () => playTrack(track.id));
+					listContainer.appendChild(trackItem);
+				});
+			}
+
+			// 3. HÀM XỬ LÝ LOGIC PHÁT NHẠC, ĐỔI TIÊU ĐỀ VÀ CẬP NHẬT LỜI BÀI HÁT
+			function playTrack(trackId) {
+				// Tìm bài hát chuẩn xác trong mảng playlist theo ID
+				const track = playlist.find(t => t.id === trackId);
+				if (!track) return;
+
+				const player = document.getElementById('player');
+				const titleElement = document.getElementById('audio-title');
+				const lyricsElement = document.getElementById('lyrics-content');
+
+				// Cập nhật nguồn nhạc, tiêu đề và lời bài hát
+				player.src = track.src;
+				titleElement.innerText = "Đang phát: " + track.title;
+				lyricsElement.innerText = track.lyrics;
+
+				// Xử lý đổi màu nền (Active) làm nổi bật bài đang được chọn trong danh sách
+				document.querySelectorAll('.track-item').forEach(item => {
+					item.classList.remove('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+				});
+				const activeItem = document.querySelector(`.track-item[data-id="${trackId}"]`);
+				if (activeItem) {
+					activeItem.classList.add('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+				}
+
+				// Tự động kích hoạt phát nhạc ngay lập tức
+				player.play();
+			}
+
+			// 4. CHẠY KHỞI TẠO NGAY KHI TRANG WEB ĐƯỢC TẢI XONG
+			document.addEventListener("DOMContentLoaded", () => {
+				renderPlaylist();
+				
+				// Mặc định nạp trước bài đầu tiên trong danh sách nhưng chưa bấm phát dữ liệu
+				if(playlist.length > 0) {
+					const firstTrack = playlist[0];
+					document.getElementById('player').src = firstTrack.src;
+					document.getElementById('audio-title').innerText = "Đang chọn: " + firstTrack.title;
+					document.getElementById('lyrics-content').innerText = firstTrack.lyrics;
+					
+					// Tạo vệt màu highlight nhẹ cho bài số 1
+					setTimeout(() => {
+						const firstItem = document.querySelector('.track-item[data-id="1"]');
+						if (firstItem) firstItem.classList.add('bg-heritage-primary/10', 'border-l-4', 'border-heritage-primary');
+					}, 200);
+				}
+			});
+    </script>
+</body>
 </html>
